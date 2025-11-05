@@ -1,0 +1,3180 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CeritaKriya - Produk UMKM dengan Cerita</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #059669;
+            --primary-dark: #047857;
+            --primary-light: #10b981;
+            --secondary: #d97706;
+            --secondary-light: #f59e0b;
+            --accent: #7c3aed;
+            --light: #f8fafc;
+            --dark: #1e293b;
+            --gray: #64748b;
+            --gray-light: #e2e8f0;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --error: #ef4444;
+            
+            --shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.05);
+            --shadow-lg: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+            --radius: 12px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Playfair Display', serif;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Login Page */
+        .login-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.9) 0%, rgba(16, 185, 129, 0.8) 100%);
+            z-index: 2000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .bubbles {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .bubble {
+            position: absolute;
+            bottom: -100px;
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            animation: rise 15s infinite ease-in;
+        }
+
+        .bubble:nth-child(1) {
+            width: 40px;
+            height: 40px;
+            left: 10%;
+            animation-duration: 8s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 20px;
+            height: 20px;
+            left: 20%;
+            animation-duration: 5s;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 50px;
+            height: 50px;
+            left: 35%;
+            animation-duration: 10s;
+            animation-delay: 2s;
+        }
+
+        .bubble:nth-child(4) {
+            width: 30px;
+            height: 30px;
+            left: 50%;
+            animation-duration: 7s;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(5) {
+            width: 25px;
+            height: 25px;
+            left: 65%;
+            animation-duration: 9s;
+            animation-delay: 1s;
+        }
+
+        .bubble:nth-child(6) {
+            width: 35px;
+            height: 35px;
+            left: 80%;
+            animation-duration: 6s;
+            animation-delay: 3s;
+        }
+
+        .bubble:nth-child(7) {
+            width: 45px;
+            height: 45px;
+            left: 90%;
+            animation-duration: 11s;
+            animation-delay: 2s;
+        }
+
+        @keyframes rise {
+            0% {
+                bottom: -100px;
+                transform: translateX(0);
+            }
+            50% {
+                transform: translateX(100px);
+            }
+            100% {
+                bottom: 1080px;
+                transform: translateX(-200px);
+            }
+        }
+
+        .login-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: var(--radius);
+            padding: 3rem;
+            width: 90%;
+            max-width: 450px;
+            box-shadow: var(--shadow-lg);
+            z-index: 10;
+            position: relative;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .login-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .login-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1rem;
+        }
+
+        .login-logo-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.5rem;
+        }
+
+        .login-logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .login-logo-text span {
+            color: var(--secondary);
+        }
+
+        .login-header h2 {
+            color: var(--dark);
+            font-size: 1.8rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .login-header p {
+            color: var(--gray);
+        }
+
+        .login-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-label {
+            font-weight: 600;
+            color: var(--dark);
+            font-size: 0.9rem;
+        }
+
+        .form-input {
+            padding: 0.9rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .login-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+        }
+
+        .remember-me {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .forgot-password {
+            color: var(--primary);
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .forgot-password:hover {
+            text-decoration: underline;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            padding: 0.9rem 1.5rem;
+            border-radius: var(--radius);
+            font-weight: 600;
+            text-decoration: none;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            box-shadow: var(--shadow);
+            width: 100%;
+            margin-top: 0.5rem;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--primary);
+            border: 2px solid var(--primary);
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        .login-footer {
+            text-align: center;
+            margin-top: 2rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .login-footer a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .login-footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Main Website (initially hidden) */
+        .main-website {
+            display: none;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--gray-light);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            height: 80px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 1.2rem;
+        }
+
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .logo-text span {
+            color: var(--secondary);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+            background: rgba(5, 150, 105, 0.05);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            height: 4px;
+            background: var(--primary);
+            border-radius: 50%;
+        }
+
+        .nav-actions {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .search-container {
+            position: relative;
+        }
+
+        .search-input {
+            padding: 0.8rem 1rem 0.8rem 2.5rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            width: 300px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .search-input:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(5, 150, 105, 0.1);
+        }
+
+        .search-icon {
+            position: absolute;
+            left: 1rem;
+            top: 50%;
+            transform: translateY(-50%);
+            color: var(--gray);
+        }
+
+        .nav-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: var(--radius);
+            background: var(--light);
+            color: var(--dark);
+            text-decoration: none;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-icon:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -5px;
+            right: -5px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            width: 20px;
+            height: 20px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .badge.hidden {
+            display: none;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            box-shadow: var(--shadow);
+        }
+
+        .btn-white:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .btn-donation {
+            background: linear-gradient(135deg, var(--accent), #8b5cf6);
+            color: white;
+            box-shadow: var(--shadow);
+        }
+
+        .btn-donation:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .mobile-menu {
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.9) 0%, rgba(16, 185, 129, 0.8) 100%), 
+                        url('https://images.unsplash.com/photo-1605000797499-95a51c5269ae?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 160px 0 100px;
+            margin-top: 80px;
+        }
+
+        .hero-content {
+            max-width: 600px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 3rem;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, var(--secondary), var(--secondary-light));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+
+        /* Products Section */
+        .section {
+            padding: 5rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-header h2 {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+
+        .section-header p {
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            border: 1px solid var(--gray-light);
+            cursor: pointer;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-badge {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: var(--secondary);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .product-content {
+            padding: 1.5rem;
+        }
+
+        .product-title {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .product-description {
+            color: var(--gray);
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .product-price {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .current-price {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .original-price {
+            color: var(--gray);
+            text-decoration: line-through;
+        }
+
+        .product-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .rating {
+            display: flex;
+            align-items: center;
+            gap: 0.3rem;
+            color: var(--secondary);
+        }
+
+        /* Product Detail Page */
+        .product-detail {
+            padding: 120px 0 5rem;
+            display: none;
+        }
+
+        .product-detail.active {
+            display: block;
+        }
+
+        .product-detail-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+        }
+
+        .product-detail-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .product-main-image {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .product-thumbnails {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .product-thumbnail {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: var(--transition);
+        }
+
+        .product-thumbnail.active {
+            border-color: var(--primary);
+        }
+
+        .product-detail-content {
+            padding: 1rem 0;
+        }
+
+        .product-detail-title {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .product-maker {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+        }
+
+        .product-maker img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .product-detail-price {
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+        }
+
+        .product-detail-description {
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .product-detail-story {
+            background: rgba(5, 150, 105, 0.05);
+            padding: 1.5rem;
+            border-radius: var(--radius);
+            margin-bottom: 2rem;
+            border-left: 4px solid var(--primary);
+        }
+
+        .product-detail-story h3 {
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .product-detail-actions {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .quantity-selector {
+            display: flex;
+            align-items: center;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            overflow: hidden;
+            width: fit-content;
+        }
+
+        .quantity-btn {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            border: none;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+
+        .quantity-input {
+            width: 60px;
+            height: 40px;
+            text-align: center;
+            border: none;
+            border-left: 1px solid var(--gray-light);
+            border-right: 1px solid var(--gray-light);
+            font-size: 1rem;
+            font-weight: 600;
+        }
+
+        .product-detail-meta {
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .meta-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--light);
+            border-radius: 50%;
+            color: var(--primary);
+        }
+
+        .meta-label {
+            font-size: 0.8rem;
+            color: var(--gray);
+        }
+
+        .product-reviews {
+            margin-top: 3rem;
+        }
+
+        .reviews-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .review-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 1.5rem;
+            box-shadow: var(--shadow);
+            margin-bottom: 1.5rem;
+        }
+
+        .review-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+        }
+
+        .reviewer {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .reviewer img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .review-date {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 2rem;
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+            transition: var(--transition);
+        }
+
+        .back-button:hover {
+            color: var(--primary-dark);
+        }
+
+        /* Cart Sidebar */
+        .cart-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .cart-sidebar.active {
+            right: 0;
+        }
+
+        .cart-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+            background: var(--primary);
+            color: white;
+        }
+
+        .cart-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .close-cart {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+        }
+
+        .cart-items {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .cart-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .cart-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+
+        .cart-item-details {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-price {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .cart-item-quantity {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .quantity-btn {
+            width: 25px;
+            height: 25px;
+            border: 1px solid var(--gray-light);
+            background: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            font-size: 0.8rem;
+        }
+
+        .remove-item {
+            color: var(--gray);
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+        }
+
+        .cart-footer {
+            padding: 1.5rem;
+            border-top: 1px solid var(--gray-light);
+        }
+
+        .cart-total {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+            font-weight: 700;
+        }
+
+        .checkout-section {
+            margin-bottom: 1rem;
+        }
+
+        .checkout-section h4 {
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .shipping-option, .payment-option {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+            cursor: pointer;
+        }
+
+        .shipping-option:hover, .payment-option:hover {
+            background: var(--light);
+        }
+
+        .coupon-section {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(5, 150, 105, 0.05);
+            border-radius: var(--radius);
+        }
+
+        .coupon-input {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .coupon-input input {
+            flex: 1;
+            padding: 0.7rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+        }
+
+        .coupon-input button {
+            padding: 0.7rem 1rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .coupon-success {
+            color: var(--success);
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+            display: none;
+        }
+
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1050;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .overlay.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        /* Account Modal */
+        .account-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1200;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .account-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .account-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: var(--shadow-lg);
+        }
+
+        .account-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+
+        .account-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+        }
+
+        .close-account {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--gray);
+            cursor: pointer;
+        }
+
+        .account-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .account-actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transform: translateX(400px);
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        /* Progress Section */
+        .progress-section {
+            padding: 120px 0 5rem;
+            display: none;
+        }
+
+        .progress-section.active {
+            display: block;
+        }
+
+        .progress-steps {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 3rem;
+            position: relative;
+        }
+
+        .progress-steps::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gray-light);
+            z-index: 1;
+        }
+
+        .progress-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .step-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: white;
+            border: 2px solid var(--gray-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 0.5rem;
+            color: var(--gray);
+        }
+
+        .step-icon.active {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: white;
+        }
+
+        .step-label {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .step-label.active {
+            color: var(--primary);
+            font-weight: 600;
+        }
+
+        .progress-details {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            box-shadow: var(--shadow);
+        }
+
+        .progress-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .progress-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Donation Section */
+        .donation-section {
+            padding: 5rem 0;
+            background: linear-gradient(135deg, rgba(124, 58, 237, 0.05) 0%, rgba(139, 92, 246, 0.05) 100%);
+        }
+
+        .donation-card {
+            background: white;
+            border-radius: var(--radius);
+            padding: 3rem;
+            box-shadow: var(--shadow);
+            text-align: center;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .donation-card h2 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .donation-card p {
+            color: var(--gray);
+            margin-bottom: 2rem;
+        }
+
+        /* Payment Modal */
+        .payment-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1300;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        .payment-modal.active {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .payment-content {
+            background: white;
+            border-radius: var(--radius);
+            padding: 2rem;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: var(--shadow-lg);
+            text-align: center;
+        }
+
+        .payment-header {
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-title {
+            font-size: 1.5rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-timer {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            font-weight: 600;
+            margin-bottom: 1.5rem;
+        }
+
+        .payment-qr {
+            width: 200px;
+            height: 200px;
+            margin: 0 auto 1.5rem;
+            background: #f5f5f5;
+            border-radius: var(--radius);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        .payment-instructions {
+            text-align: left;
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background: rgba(5, 150, 105, 0.05);
+            border-radius: var(--radius);
+        }
+
+        .payment-instructions ol {
+            padding-left: 1.5rem;
+        }
+
+        .payment-instructions li {
+            margin-bottom: 0.5rem;
+        }
+
+        .payment-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+        }
+
+        /* Products Filter */
+        .products-filter {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .filter-options {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .filter-select {
+            padding: 0.7rem 1rem;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            background: white;
+            cursor: pointer;
+        }
+
+        .view-options {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .view-option {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--gray-light);
+            border-radius: var(--radius);
+            background: white;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .view-option.active {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        /* Wishlist Sidebar */
+        .wishlist-sidebar {
+            position: fixed;
+            top: 0;
+            right: -400px;
+            width: 380px;
+            height: 100vh;
+            background: white;
+            box-shadow: -5px 0 25px rgba(0, 0, 0, 0.1);
+            z-index: 1100;
+            transition: var(--transition);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .wishlist-sidebar.active {
+            right: 0;
+        }
+
+        .wishlist-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem;
+            border-bottom: 1px solid var(--gray-light);
+            background: var(--primary);
+            color: white;
+        }
+
+        .wishlist-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+        }
+
+        .close-wishlist {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.5rem;
+            border-radius: var(--radius);
+        }
+
+        .wishlist-items {
+            flex: 1;
+            padding: 1rem;
+            overflow-y: auto;
+        }
+
+        .wishlist-item {
+            display: flex;
+            gap: 1rem;
+            padding: 1rem;
+            border-bottom: 1px solid var(--gray-light);
+        }
+
+        .wishlist-item-image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: var(--radius);
+        }
+
+        .wishlist-item-details {
+            flex: 1;
+        }
+
+        .wishlist-item-name {
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .wishlist-item-price {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .wishlist-actions {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .wishlist-empty {
+            text-align: center;
+            padding: 2rem;
+            color: var(--gray);
+        }
+
+        .wishlist-empty i {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            opacity: 0.5;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: block;
+            }
+
+            .search-input {
+                width: 200px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .cart-sidebar, .wishlist-sidebar {
+                width: 100%;
+                right: -100%;
+            }
+
+            .product-detail-container {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+
+            .product-main-image {
+                height: 300px;
+            }
+
+            .progress-steps {
+                flex-direction: column;
+                gap: 2rem;
+            }
+
+            .progress-steps::before {
+                display: none;
+            }
+
+            .login-container {
+                padding: 2rem;
+            }
+
+            .products-filter {
+                flex-direction: column;
+                gap: 1rem;
+                align-items: flex-start;
+            }
+
+            .filter-options {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page (Mandatory) -->
+    <div class="login-page" id="login-page">
+        <div class="bubbles">
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+            <div class="bubble"></div>
+        </div>
+        <div class="login-container">
+            <div class="login-header">
+                <div class="login-logo">
+                    <div class="login-logo-icon">CK</div>
+                    <div class="login-logo-text">Cerita<span>Kriya</span></div>
+                </div>
+                <h2>Selamat Datang</h2>
+                <p>Masuk untuk menjelajahi produk UMKM dengan cerita</p>
+            </div>
+            <form class="login-form" id="login-form">
+                <div class="form-group">
+                    <label class="form-label" for="email">Email</label>
+                    <input type="email" class="form-input" id="email" placeholder="email@example.com" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="password">Password</label>
+                    <input type="password" class="form-input" id="password" placeholder="Masukkan password" required>
+                </div>
+                <div class="login-actions">
+                    <div class="remember-me">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Ingat saya</label>
+                    </div>
+                    <a href="#" class="forgot-password">Lupa password?</a>
+                </div>
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i>
+                    Masuk
+                </button>
+            </form>
+            <div class="login-footer">
+                Belum punya akun? <a href="#" id="register-link">Daftar di sini</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Website (Initially Hidden) -->
+    <div class="main-website" id="main-website">
+        <!-- Header -->
+        <header>
+            <div class="container">
+                <nav class="navbar">
+                <a href="#" class="logo" id="logo" style="margin-left: -150px; margin-right: 50px;">
+                    <div class="logo-icon">CK</div>
+                    <div class="logo-text">Cerita<span>Kriya</span></div>
+                </a>
+
+<ul class="nav-links" style="display: flex; list-style: none; justify-content: space-between; width: 100%; margin: 0; padding: 0 20px;">
+    <li><a href="#" class="active nav-link" data-target="home-section" style="padding: 15px 25px; font-size: 16px; text-decoration: none; display: block;">Beranda</a></li>
+    <li><a href="#" class="nav-link" data-target="products-section" style="padding: 15px 25px; font-size: 16px; text-decoration: none; display: block;">Produk</a></li>
+    <li><a href="#" class="nav-link" data-target="discount-section" style="padding: 15px 25px; font-size: 16px; text-decoration: none; display: block;">Diskon</a></li>
+    <li><a href="#" class="nav-link" data-target="progress-section" style="padding: 15px 25px; font-size: 16px; text-decoration: none; display: block;">Pengantaran</a></li>
+    <li><a href="#" class="nav-link" data-target="profile-section" style="padding: 15px 25px; font-size: 16px; text-decoration: none; display: block;">Profil</a></li>
+</ul>
+
+                    <div class="nav-actions">
+                        <div class="search-container">
+                            <i class="fas fa-search search-icon"></i>
+                            <input type="text" class="search-input" placeholder="Cari produk...">
+                        </div>
+                        
+<a href="#" class="nav-icon" id="wishlist-btn" style="padding: 12px 16px; font-size: 18px; font-weight: 600;">
+    <i class="far fa-heart"></i>
+    <span class="badge hidden" id="wishlist-badge" style="font-size: 14px; font-weight: 700;">0</span>
+</a>
+
+<a href="#" class="nav-icon" id="cart-btn" style="padding: 12px 16px; font-size: 18px; font-weight: 600;">
+    <i class="fas fa-shopping-cart"></i>
+    <span class="badge hidden" id="cart-badge" style="font-size: 14px; font-weight: 700;">0</span>
+</a>
+
+<a href="#" class="nav-icon" id="account-btn" style="padding: 12px 16px; font-size: 18px; font-weight: 600;">
+    <i class="far fa-user"></i>
+</a>
+                        
+                    </div>
+                </nav>
+            </div>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero" id="home-section">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Temukan Cerita di Balik Setiap Produk UMKM</h1>
+                    <p>Jelajahi produk unik dengan kisah inspiratif dari pengrajin lokal Indonesia. Dukung kreativitas dan warisan budaya.</p>
+                    <div class="hero-actions">
+                        <a href="#" class="btn btn-primary" id="jelajahi-produk-btn">
+                            <i class="fas fa-shopping-bag"></i>
+                            Jelajahi Produk
+                        </a>
+                        <a href="#" class="btn btn-white" id="tonton-kisah-btn">
+                            <i class="fas fa-play-circle"></i>
+                            Tonton Kisah
+                        </a>
+                        <a href="#" class="btn btn-donation" id="donasi-btn">
+                            <i class="fas fa-heart"></i>
+                            Donasi UMKM
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <div class="stat-value">500+</div>
+                            <div class="stat-label">UMKM Terdaftar</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">2,000+</div>
+                            <div class="stat-label">Produk Unik</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-value">15K+</div>
+                            <div class="stat-label">Cerita Dibagikan</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Featured Products -->
+        <section class="section" id="products-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Produk Unggulan</h2>
+                    <p>Produk terpilih dengan cerita inspiratif dari UMKM Indonesia</p>
+                </div>
+                
+                <!-- Products Filter -->
+                <div class="products-filter">
+                    <div class="filter-options">
+                        <select class="filter-select" id="category-filter">
+                            <option value="">Semua Kategori</option>
+                            <option value="kerajinan">Kerajinan Tangan</option>
+                            <option value="makanan">Makanan & Minuman</option>
+                            <option value="tekstil">Tekstil & Batik</option>
+                            <option value="aksesoris">Aksesoris</option>
+                        </select>
+                        <select class="filter-select" id="price-filter">
+                            <option value="">Semua Harga</option>
+                            <option value="0-100000">Rp 0 - 100.000</option>
+                            <option value="100000-300000">Rp 100.000 - 300.000</option>
+                            <option value="300000-500000">Rp 300.000 - 500.000</option>
+                            <option value="500000+">> Rp 500.000</option>
+                        </select>
+                        <select class="filter-select" id="sort-filter">
+                            <option value="popular">Terpopuler</option>
+                            <option value="newest">Terbaru</option>
+                            <option value="price-low">Harga Terendah</option>
+                            <option value="price-high">Harga Tertinggi</option>
+                            <option value="rating">Rating Tertinggi</option>
+                        </select>
+                    </div>
+                    <div class="view-options">
+                        <div class="view-option active" data-view="grid">
+                            <i class="fas fa-th"></i>
+                        </div>
+                        <div class="view-option" data-view="list">
+                            <i class="fas fa-list"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="products-container">
+                    <!-- Products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Discount Products -->
+        <section class="section" id="discount-section" style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Produk Diskon</h2>
+                    <p>Produk dengan penawaran spesial untuk Anda</p>
+                </div>
+                
+                <!-- Coupon Section -->
+                <div class="coupon-section" style="max-width: 800px; margin: 0 auto 3rem;">
+                    <h3 style="margin-bottom: 1rem; color: var(--primary);">Kupon Diskon Tersedia</h3>
+                    <div class="coupons-grid" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem;">
+                        <div style="background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 4px solid var(--secondary);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h4 style="color: var(--secondary);">DISKON10</h4>
+                                <span style="background: var(--secondary); color: white; padding: 0.2rem 0.5rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Aktif</span>
+                            </div>
+                            <p style="color: var(--gray); margin-bottom: 1rem;">Dapatkan diskon 10% untuk semua produk</p>
+                            <button class="btn btn-primary" style="width: 100%;" data-code="DISKON10">Gunakan Kupon</button>
+                        </div>
+                        <div style="background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 4px solid var(--accent);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h4 style="color: var(--accent);">UMKM15</h4>
+                                <span style="background: var(--accent); color: white; padding: 0.2rem 0.5rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Aktif</span>
+                            </div>
+                            <p style="color: var(--gray); margin-bottom: 1rem;">Diskon 15% untuk produk UMKM tertentu</p>
+                            <button class="btn btn-primary" style="width: 100%;" data-code="UMKM15">Gunakan Kupon</button>
+                        </div>
+                        <div style="background: white; border-radius: var(--radius); padding: 1.5rem; box-shadow: var(--shadow); border-left: 4px solid var(--primary);">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
+                                <h4 style="color: var(--primary);">GRATISONGKIR</h4>
+                                <span style="background: var(--primary); color: white; padding: 0.2rem 0.5rem; border-radius: 20px; font-size: 0.8rem; font-weight: 600;">Aktif</span>
+                            </div>
+                            <p style="color: var(--gray); margin-bottom: 1rem;">Gratis ongkir untuk pembelian di atas Rp 200.000</p>
+                            <button class="btn btn-primary" style="width: 100%;" data-code="GRATISONGKIR">Gunakan Kupon</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="products-grid" id="discount-products-container">
+                    <!-- Discount products will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Progress Section -->
+        <section class="progress-section" id="progress-section">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Progress Pengantaran</h2>
+                    <p>Lacak status pesanan Anda</p>
+                </div>
+                <div class="progress-steps">
+                    <div class="progress-step">
+                        <div class="step-icon active">
+                            <i class="fas fa-shopping-cart"></i>
+                        </div>
+                        <div class="step-label active">Pesanan Diterima</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-icon">
+                            <i class="fas fa-box"></i>
+                        </div>
+                        <div class="step-label">Diproses</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-icon">
+                            <i class="fas fa-shipping-fast"></i>
+                        </div>
+                        <div class="step-label">Dikirim</div>
+                    </div>
+                    <div class="progress-step">
+                        <div class="step-icon">
+                            <i class="fas fa-check"></i>
+                        </div>
+                        <div class="step-label">Selesai</div>
+                    </div>
+                </div>
+                <div class="progress-details">
+                    <div class="progress-item">
+                        <div>
+                            <h4>Madu Hutan Kalimatna</h4>
+                            <p>No. Pesanan: #CK2023001</p>
+                        </div>
+                        <div>
+                            <p>Status: <span style="color: var(--primary); font-weight: 600;">Pesanan Diterima</span></p>
+                            <p>Estimasi: 6-12 hari</p>
+                        </div>
+                    </div>
+                    <div class="progress-item">
+                        <div>
+                            <h4>Tenun Flores Premium</h4>
+                            <p>No. Pesanan: #CK2012312</p>
+                        </div>
+                        <div>
+                            <p>Status: <span style="color: var(--success); font-weight: 600;">Sudah Selesai</span></p>
+                            <p>Diterima: 15 Juni 2025</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Profile Section -->
+        <section class="section" id="profile-section" style="display: none;">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Profil Saya</h2>
+                    <p>Kelola informasi dan preferensi akun Anda</p>
+                </div>
+                <div class="account-content" style="max-width: 800px; margin: 0 auto;">
+                    <div class="form-group">
+                        <label class="form-label">Nama Lengkap</label>
+                        <input type="text" class="form-input" value="Jonathan Sentosa Sukirdjadjaja" placeholder="Nama lengkap">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" value="jonathan.1415064@penabur.sch.id" placeholder="Email">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Nomor Telepon</label>
+                        <input type="tel" class="form-input" value="085722075397" placeholder="Nomor telepon">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Alamat</label>
+                        <textarea class="form-input" rows="3" placeholder="Alamat lengkap">-Belum diisi-</textarea>
+                    </div>
+                    <div class="account-actions" style="justify-content: flex-end;">
+                        <button class="btn btn-primary">
+                            <i class="fas fa-save"></i>
+                            Simpan Perubahan
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Detail Section -->
+        <section class="product-detail" id="product-detail-section">
+            <div class="container">
+                <a href="#" class="back-button" id="back-to-products">
+                    <i class="fas fa-arrow-left"></i>
+                    Kembali ke Produk
+                </a>
+                <div class="product-detail-container" id="product-detail-content">
+                    <!-- Product detail will be loaded here -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Donation Section -->
+        <section class="donation-section" id="donation-section" style="display: none;">
+            <div class="container">
+                <div class="donation-card">
+                    <h2>Dukung UMKM Lokal</h2>
+                    <p>Bantu pengrajin lokal untuk terus berkarya dan melestarikan warisan budaya Indonesia. Donasi Anda akan digunakan untuk pengembangan usaha, pelatihan, dan peralatan.</p>
+                    <div class="donation-options" style="display: flex; gap: 1rem; margin-bottom: 2rem; flex-wrap: wrap;">
+                        <button class="btn btn-donation" data-amount="50000">Rp 50.000</button>
+                        <button class="btn btn-donation" data-amount="100000">Rp 100.000</button>
+                        <button class="btn btn-donation" data-amount="250000">Rp 250.000</button>
+                        <button class="btn btn-donation" data-amount="500000">Rp 500.000</button>
+                    </div>
+                    <div class="form-group" style="margin-bottom: 2rem;">
+                        <label class="form-label">Jumlah Donasi Lainnya</label>
+                        <input type="number" class="form-input" id="custom-donation" placeholder="Masukkan jumlah donasi">
+                    </div>
+                    <button class="btn btn-donation" style="width: 100%;" id="confirm-donation">
+                        <i class="fas fa-heart"></i>
+                        Konfirmasi Donasi
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cart Sidebar -->
+ <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+        <h3 class="cart-title">Keranjang Belanja</h3>
+        <button class="close-cart" id="close-cart">
+            <i class="fas fa-times"></i>
+        </button>
+    </div>
+    <div class="cart-items" id="cart-items" style="height: 500px; overflow-y: scroll; border: 1px solid #ddd;">
+        <!-- Cart items will be loaded here -->
+        <div style="height: 1000px; background: linear-gradient(white, lightblue); padding: 20px;">
+            Area ini sengaja dibuat tinggi untuk menunjukkan scroll bekerja<br><br>
+            Item keranjang akan ditampilkan di sini<br><br>
+            Scroll ke bawah untuk melihat lebih banyak konten...
+        </div>
+    </div>
+    <div class="cart-footer">
+        <div class="coupon-section">
+            <h4>Gunakan Kupon</h4>
+            <div class="coupon-input">
+                <input type="text" id="coupon-code" placeholder="Masukkan kode kupon">
+                <button id="apply-coupon">Terapkan</button>
+            </div>
+            <div class="coupon-success" id="coupon-success">
+                Kupon berhasil diterapkan!
+            </div>
+        </div>
+        
+        <div class="checkout-section">
+            <h4>Pengiriman</h4>
+            <div class="shipping-option">
+                <input type="radio" id="regular" name="shipping" checked>
+                <label for="regular">Reguler - Rp 15.000</label>
+            </div>
+            <div class="shipping-option">
+                <input type="radio" id="express" name="shipping">
+                <label for="express">Express (1-2 hari) - Rp 25.000</label>
+            </div>
+        </div>
+        
+        <div class="checkout-section">
+            <h4>Pembayaran</h4>
+            <div class="payment-option">
+                <input type="radio" id="bank" name="payment" checked>
+                <label for="bank">Qris</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="ewallet" name="payment">
+                <label for="ewallet">Transfer Bank</label>
+            </div>
+            <div class="payment-option">
+                <input type="radio" id="cod" name="payment">
+                <label for="cod">COD - Verifikasi KTP</label>
+            </div>
+        </div>
+        
+        <div class="cart-total">
+            <span>Total:</span>
+            <span id="cart-total">Rp 0</span>
+        </div>
+        <button class="btn btn-primary" style="width: 100%;" id="checkout-btn">
+            <i class="fas fa-credit-card"></i>
+            Checkout Sekarang
+        </button>
+    </div>
+</div>
+
+        <!-- Wishlist Sidebar -->
+        <div class="wishlist-sidebar" id="wishlist-sidebar">
+            <div class="wishlist-header">
+                <h3 class="wishlist-title">Wishlist Saya</h3>
+                <button class="close-wishlist" id="close-wishlist">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="wishlist-items" id="wishlist-items">
+                <!-- Wishlist items will be loaded here -->
+            </div>
+        </div>
+
+        <!-- Account Modal -->
+        <div class="account-modal" id="account-modal">
+            <div class="account-content">
+                <div class="account-header">
+                    <h3 class="account-title">Masuk ke Akun</h3>
+                    <button class="close-account" id="close-account">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <form class="account-form">
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" class="form-input" placeholder="email@example.com" required>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Password</label>
+                        <input type="password" class="form-input" placeholder="Masukkan password" required>
+                    </div>
+                    <div class="account-actions">
+                        <button type="submit" class="btn btn-primary" style="flex: 1;">
+                            <i class="fas fa-sign-in-alt"></i>
+                            Masuk
+                        </button>
+                        <button type="button" class="btn btn-secondary" id="register-btn">
+                            <i class="fas fa-user-plus"></i>
+                            Daftar
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- Payment Modal -->
+        <div class="payment-modal" id="payment-modal">
+            <div class="payment-content">
+                <div class="payment-header">
+                    <h3 class="payment-title">Pembayaran</h3>
+                    <div class="payment-timer" id="payment-timer">01:00</div>
+                </div>
+                <div class="payment-qr">
+    <div style="text-align: center;">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/2/2f/Rickrolling_QR_code.png" 
+             alt="QR Code Pembayaran" 
+             style="width: 150px; height: 150px; margin-bottom: 0.5rem;">
+        <div>QR Code Pembayaran</div>
+    </div>
+</div>
+                <div class="payment-instructions">
+                    <h4 style="margin-bottom: 0.5rem;">Instruksi Pembayaran:</h4>
+                    <ol>
+                        <li>Buka aplikasi e-wallet atau mobile banking Anda</li>
+                        <li>Pindai QR code di atas</li>
+                        <li>Konfirmasi pembayaran Anda</li>
+                        <li>Tunggu hingga proses verifikasi selesai</li>
+                    </ol>
+                </div>
+                <div class="payment-actions">
+                    <button class="btn btn-secondary" id="cancel-payment">
+                        Batalkan
+                    </button>
+                    <button class="btn btn-primary" id="confirm-payment">
+                        Saya Sudah Bayar
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Overlay -->
+        <div class="overlay" id="overlay"></div>
+    </div>
+
+    <script>
+        // Product Data
+        const products = [
+            {
+                id: 1,
+                name: "Keramik Motif Alam Bu Siti",
+                price: 185000,
+                originalPrice: 225000,
+                image: "https://www.mustikaland.co.id/img/jenis-batu-alam.png",
+                images: [
+                    "https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80",
+                    "https://images.unsplash.com/photo-1573164574472-797cdf4a583a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1580338450481-8a7c4a7c8c3a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                ],
+                description: "Keramik tangan dengan motif alam yang terinspirasi dari keindahan Indonesia",
+                detailDescription: "Keramik ini dibuat dengan teknik tradisional oleh Bu Siti yang telah menggeluti kerajinan keramik selama lebih dari 20 tahun. Setiap motif diukir dengan tangan, terinspirasi dari keindahan alam Indonesia seperti bunga, daun, dan elemen alam lainnya. Produk ini tidak hanya fungsional tetapi juga memiliki nilai seni yang tinggi.",
+                maker: {
+                    name: "Bu Siti",
+                    avatar: "https://images.unsplash.com/photo-1544005313-94ddf0286df2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+                    story: "Bu Siti memulai usaha keramiknya dari nol setelah suaminya meninggal. Dengan tekad kuat dan keterampilan warisan keluarga, ia membangun usaha yang kini menjadi sumber penghidupan bagi 10 karyawan di desanya."
+                },
+                rating: 4.8,
+                reviews: 124,
+                badge: "Terlaris",
+                category: "kerajinan",
+                reviewsData: [
+                    {
+                        user: "Rina Wijaya",
+                        avatar: "https://images.unsplash.com/photo-1494790108755-2616b786d4d3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                        rating: 5,
+                        comment: "Keramiknya sangat cantik dan berkualitas. Pengiriman cepat dan aman.",
+                        date: "12 Januari 2023"
+                    },
+                    {
+                        user: "Budi Santoso",
+                        avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                        rating: 4,
+                        comment: "Motifnya unik dan berbeda dari yang lain. Cocok untuk hadiah.",
+                        date: "5 Februari 2023"
+                    }
+                ],
+                material: "Tanah liat pilihan",
+                origin: "Kasongan, Yogyakarta",
+                care: "Cuci dengan tangan, hindari mesin cuci piring"
+            },
+            {
+                id: 2,
+                name: "Tenun Flores Premium",
+                price: 450000,
+                originalPrice: null,
+                image: "https://img.merahputih.com/media/3e/d3/6d/3ed36d2bd757a294430d2b031a03ab04.jpg",
+                images: [
+                    "https://images.unsplash.com/photo-1611273426858-450d8e3c9fce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1583947215259-38e31be8751f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1558&q=80"
+                ],
+                description: "Tenun tradisional Flores dengan motif filosofis mendalam",
+                detailDescription: "Tenun Flores ini dibuat dengan teknik tradisional yang telah diwariskan turun-temurun. Setiap motif memiliki makna filosofis yang dalam, mencerminkan kearifan lokal masyarakat Flores. Proses pembuatannya memakan waktu berminggu-minggu karena dilakukan sepenuhnya dengan tangan.",
+                maker: {
+                    name: "Mama Maria",
+                    avatar: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=688&q=80",
+                    story: "Mama Maria adalah penenun senior di desanya yang telah melestarikan seni tenun selama 40 tahun. Ia mengajarkan keterampilan ini kepada generasi muda untuk memastikan warisan budaya tidak punah."
+                },
+                rating: 4.9,
+                reviews: 89,
+                badge: "Baru",
+                category: "tekstil",
+                reviewsData: [
+                    {
+                        user: "Dewi Lestari",
+                        avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                        rating: 5,
+                        comment: "Kualitas tenunnya luar biasa. Warna dan motifnya sangat indah.",
+                        date: "20 Maret 2023"
+                    }
+                ],
+                material: "Benang kapas alami",
+                origin: "Flores, NTT",
+                care: "Cuci dengan deterjen lembut, jemur di tempat teduh"
+            },
+            {
+                id: 3,
+                name: "Kopi Arabika Toraja",
+                price: 95000,
+                originalPrice: 120000,
+                image: "https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80",
+                images: [
+                    "https://images.unsplash.com/photo-1447933601403-0c6688de566e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1361&q=80",
+                    "https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1515442261605-4447e9c7d8b8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                ],
+                description: "Kopi single origin dari petani Toraja dengan cita rasa kompleks",
+                detailDescription: "Kopi Arabika Toraja ini berasal dari perkebunan di ketinggian 1.200-1.500 mdpl di Toraja, Sulawesi Selatan. Diproses secara natural dengan penjemuran tradisional, kopi ini memiliki cita rasa yang kompleks dengan aroma rempah, rasa buah-buahan kering, dan aftertaste yang panjang.",
+                maker: {
+                    name: "Pak Rudi",
+                    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                    story: "Pak Rudi adalah petani kopi generasi ketiga yang mempertahankan cara bertani tradisional sambil menerapkan praktik berkelanjutan. Ia memimpin koperasi petani kopi di desanya."
+                },
+                rating: 4.7,
+                reviews: 156,
+                badge: "Diskon 20%",
+                category: "makanan",
+                reviewsData: [
+                    {
+                        user: "Ahmad Fauzi",
+                        avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                        rating: 5,
+                        comment: "Aromanya harum sekali, rasa kopinya smooth dan tidak pahit.",
+                        date: "3 April 2023"
+                    },
+                    {
+                        user: "Sari Indah",
+                        avatar: "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80",
+                        rating: 4,
+                        comment: "Kualitas kopinya bagus, pengemasannya juga rapi.",
+                        date: "15 April 2023"
+                    }
+                ],
+                material: "Biji kopi arabika pilihan",
+                origin: "Toraja, Sulawesi Selatan",
+                care: "Simpan di tempat sejuk dan kering, hindari sinar matahari langsung"
+            },
+            {
+                id: 4,
+                name: "Batik Tulis Solo Heritage",
+                price: 350000,
+                originalPrice: 420000,
+                image: "https://gratisongkir-storage.com/products/900x900/SuZk7mmqV01t.jpg",
+                images: [
+                    "https://images.unsplash.com/photo-1583778176476-4a8b9f8cafe7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1618359057154-e21ae64350b6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1520006403909-838d6b92c22e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                ],
+                description: "Batik tulis premium dengan motif klasik warisan leluhur",
+                detailDescription: "Batik tulis Solo ini dibuat dengan teknik tradisional menggunakan canting dan malam. Motifnya terinspirasi dari batik klasik keraton Solo dengan makna filosofis yang dalam. Proses pembuatannya memakan waktu hingga 3 minggu untuk satu kain, menjadikannya karya seni yang bernilai tinggi.",
+                maker: {
+                    name: "Mbah Sastro",
+                    avatar: "https://images.unsplash.com/photo-1560250097-0b93528c311a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                    story: "Mbah Sastro adalah maestro batik tulis yang telah menggeluti seni batik sejak usia 15 tahun. Karyanya telah dipamerkan di berbagai negara dan ia aktif melestarikan seni batik kepada generasi muda."
+                },
+                rating: 4.8,
+                reviews: 92,
+                badge: "Limited",
+                category: "tekstil",
+                reviewsData: [
+                    {
+                        user: "Lia Amelia",
+                        avatar: "https://images.unsplash.com/photo-1544725176-7c40e5a71c5e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1467&q=80",
+                        rating: 5,
+                        comment: "Detail batiknya sangat halus dan rapi. Benar-benar karya seni.",
+                        date: "28 Februari 2023"
+                    }
+                ],
+                material: "Kain mori primissima",
+                origin: "Solo, Jawa Tengah",
+                care: "Cuci dengan tangan menggunakan sabun lembut, jangan diperas"
+            },
+            {
+                id: 5,
+                name: "Kerajinan Rotan Anyaman",
+                price: 275000,
+                originalPrice: 350000,
+                image: "https://smexpo.pertamina.com/data-smexpo/images/products/4933/kranjang_rotan_1739428260.jpg",
+                images: [
+                    "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1548484352-ea35bd61b4d9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    "https://images.unsplash.com/photo-1594736797933-d0401ba94693?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80"
+                ],
+                description: "Tas anyaman rotan dengan desain modern dan fungsional",
+                detailDescription: "Kerajinan rotan ini dibuat dengan teknik anyaman tradisional yang telah disesuaikan dengan kebutuhan modern. Produk ini ramah lingkungan dan tahan lama, cocok untuk aktivitas sehari-hari maupun acara khusus.",
+                maker: {
+                    name: "Ibu Wati",
+                    avatar: "https://images.unsplash.com/photo-1551836026-d5c88ac5c4c9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    story: "Ibu Wati adalah pengrajin rotan yang telah mengembangkan keterampilannya selama 15 tahun. Ia memimpin kelompok pengrajin wanita di desanya untuk menciptakan produk bernilai jual tinggi."
+                },
+                rating: 4.6,
+                reviews: 67,
+                badge: "Hemat 20%",
+                category: "kerajinan",
+                reviewsData: [
+                    {
+                        user: "Maya Sari",
+                        avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                        rating: 5,
+                        comment: "Tasnya sangat unik dan kuat. Banyak yang tanya beli di mana.",
+                        date: "10 Mei 2023"
+                    }
+                ],
+                material: "Rotan alami dan kulit sintetis",
+                origin: "Cirebon, Jawa Barat",
+                care: "Lap dengan kain lembab, hindari paparan air berlebihan"
+            },
+            {
+                id: 6,
+                name: "Madu Hutan Kalimantan",
+                price: 120000,
+                originalPrice: null,
+                image: "https://cdn.rri.co.id/berita/Bandar_Lampung/o/1740648559534-4179dbe24d67ef5c813c5da2cd53ee47/s8pgsassv2xjeoe.jpeg",
+                images: [
+                    "https://static.republika.co.id/uploads/images/inpicture_slide/peternak-budidaya-madu-hutan-dengan-produk-yang-dihasilkan-yakni_220609143859-103.jpeg",
+                    "https://asset.kompas.com/crops/uatp9R4X9gxvQitaVPQfvJqNhzE=/65x38:945x625/750x500/data/photo/2018/10/16/3894874319.jpg",
+                    "https://cdn.digitaldesa.com/uploads/marketplace/products/e1f381267dd089bbf182a84a601ed121.jpg"
+                ],
+                description: "Madu murni hasil panen dari hutan Kalimantan",
+                detailDescription: "Madu hutan Kalimantan ini dihasilkan oleh lebah liar yang mengambil nektar dari berbagai jenis bunga di hutan Kalimantan. Proses pemanenan dilakukan secara tradisional dengan memperhatikan kelestarian lingkungan. Madu ini kaya akan nutrisi dan memiliki rasa yang khas.",
+                maker: {
+                    name: "Pak Ruddy",
+                    avatar: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80",
+                    story: "Pak Ruddy adalah petani madu yang telah menjaga tradisi pemanenan madu hutan selama lebih dari 30 tahun. Ia bekerja sama dengan masyarakat adat untuk melestarikan hutan dan sumber madu."
+                },
+                rating: 4.5,
+                reviews: 113,
+                badge: "Organik",
+                category: "makanan",
+                reviewsData: [
+                    {
+                        user: "Joni Hartono",
+                        avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                        rating: 5,
+                        comment: "Rasa madunya sangat alami, berbeda dengan madu biasa. Keluarga suka sekali.",
+                        date: "22 April 2023"
+                    },
+                    {
+                        user: "Jenny Sari",
+                        avatar: "https://images.unsplash.com/photo-1517841905240-472988babdf9?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=687&q=80",
+                        rating: 5,
+                        comment: "Rasa madunya enak dan beda dengan yang lain, anak saya senang dengan madunya.",
+                        date: "12 Juni 2022"
+                    }
+                ],
+                material: "Madu murni hutan Kalimantan",
+                origin: "Kalimantan Tengah",
+                care: "Simpan di tempat sejuk, hindari sinar matahari langsung"
+            }
+        ];
+
+        // Cart System
+        let cart = [];
+        let wishlist = [];
+        let activeCoupon = null;
+        let paymentTimer = null;
+        let timeLeft = 60;
+
+        const loginPage = document.getElementById('login-page');
+        const mainWebsite = document.getElementById('main-website');
+        const loginForm = document.getElementById('login-form');
+        const cartBtn = document.getElementById('cart-btn');
+        const cartSidebar = document.getElementById('cart-sidebar');
+        const closeCart = document.getElementById('close-cart');
+        const wishlistBtn = document.getElementById('wishlist-btn');
+        const wishlistSidebar = document.getElementById('wishlist-sidebar');
+        const closeWishlist = document.getElementById('close-wishlist');
+        const overlay = document.getElementById('overlay');
+        const productsContainer = document.getElementById('products-container');
+        const discountProductsContainer = document.getElementById('discount-products-container');
+        const cartItems = document.getElementById('cart-items');
+        const cartTotal = document.getElementById('cart-total');
+        const cartBadge = document.getElementById('cart-badge');
+        const wishlistBadge = document.getElementById('wishlist-badge');
+        const checkoutBtn = document.getElementById('checkout-btn');
+        const accountBtn = document.getElementById('account-btn');
+        const accountModal = document.getElementById('account-modal');
+        const closeAccount = document.getElementById('close-account');
+        const registerBtn = document.getElementById('register-btn');
+        const searchInput = document.querySelector('.search-input');
+        const homeSection = document.getElementById('home-section');
+        const productsSection = document.getElementById('products-section');
+        const discountSection = document.getElementById('discount-section');
+        const progressSection = document.getElementById('progress-section');
+        const profileSection = document.getElementById('profile-section');
+        const donationSection = document.getElementById('donation-section');
+        const productDetailSection = document.getElementById('product-detail-section');
+        const productDetailContent = document.getElementById('product-detail-content');
+        const backToProducts = document.getElementById('back-to-products');
+        const jelajahiProdukBtn = document.getElementById('jelajahi-produk-btn');
+        const tontonKisahBtn = document.getElementById('tonton-kisah-btn');
+        const donasiBtn = document.getElementById('donasi-btn');
+        const confirmDonationBtn = document.getElementById('confirm-donation');
+        const customDonationInput = document.getElementById('custom-donation');
+        const logo = document.getElementById('logo');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const applyCouponBtn = document.getElementById('apply-coupon');
+        const couponCodeInput = document.getElementById('coupon-code');
+        const couponSuccess = document.getElementById('coupon-success');
+        const paymentModal = document.getElementById('payment-modal');
+        const paymentTimerElement = document.getElementById('payment-timer');
+        const cancelPaymentBtn = document.getElementById('cancel-payment');
+        const confirmPaymentBtn = document.getElementById('confirm-payment');
+        const categoryFilter = document.getElementById('category-filter');
+        const priceFilter = document.getElementById('price-filter');
+        const sortFilter = document.getElementById('sort-filter');
+        const viewOptions = document.querySelectorAll('.view-option');
+
+        // Format currency
+        function formatCurrency(amount) {
+            return new Intl.NumberFormat('id-ID', {
+                style: 'currency',
+                currency: 'IDR',
+                minimumFractionDigits: 0
+            }).format(amount);
+        }
+
+        // Show notification
+        function showNotification(message, type = 'success') {
+            const notification = document.createElement('div');
+            notification.className = 'notification';
+            notification.innerHTML = `
+                <i class="fas fa-${type === 'success' ? 'check' : type === 'error' ? 'exclamation-triangle' : 'info-circle'}"></i>
+                ${message}
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => notification.classList.add('show'), 100);
+            
+            setTimeout(() => {
+                notification.classList.remove('show');
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+
+        // Show section and hide others
+        function showSection(sectionToShow) {
+            // Hide all sections
+            const sections = [homeSection, productsSection, discountSection, progressSection, profileSection, productDetailSection, donationSection];
+            sections.forEach(section => {
+                section.style.display = 'none';
+                section.classList.remove('active');
+            });
+            
+            // Show selected section
+            sectionToShow.style.display = 'block';
+            sectionToShow.classList.add('active');
+            
+            // Update active nav link
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('data-target') === sectionToShow.id) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Render products
+        function renderProducts() {
+            productsContainer.innerHTML = products.map(product => `
+                <div class="product-card" data-id="${product.id}">
+                    <div style="position: relative;">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">
+                            <span class="current-price">${formatCurrency(product.price)}</span>
+                            ${product.originalPrice ? 
+                                `<span class="original-price">${formatCurrency(product.originalPrice)}</span>` : 
+                                ''}
+                        </div>
+                        <div class="product-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>${product.rating} (${product.reviews})</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary add-to-cart" data-id="${product.id}">
+                                    <i class="fas fa-plus"></i>
+                                    Keranjang
+                                </button>
+                                <button class="btn btn-secondary add-to-wishlist" data-id="${product.id}">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Render discount products
+        function renderDiscountProducts() {
+            const discountProducts = products.filter(product => product.originalPrice !== null);
+            
+            discountProductsContainer.innerHTML = discountProducts.map(product => `
+                <div class="product-card" data-id="${product.id}">
+                    <div style="position: relative;">
+                        <img src="${product.image}" alt="${product.name}" class="product-image">
+                        ${product.badge ? `<div class="product-badge">${product.badge}</div>` : ''}
+                    </div>
+                    <div class="product-content">
+                        <h3 class="product-title">${product.name}</h3>
+                        <p class="product-description">${product.description}</p>
+                        <div class="product-price">
+                            <span class="current-price">${formatCurrency(product.price)}</span>
+                            ${product.originalPrice ? 
+                                `<span class="original-price">${formatCurrency(product.originalPrice)}</span>` : 
+                                ''}
+                        </div>
+                        <div class="product-meta">
+                            <div class="rating">
+                                <i class="fas fa-star"></i>
+                                <span>${product.rating} (${product.reviews})</span>
+                            </div>
+                            <div style="display: flex; gap: 0.5rem;">
+                                <button class="btn btn-primary add-to-cart" data-id="${product.id}">
+                                    <i class="fas fa-plus"></i>
+                                    Keranjang
+                                </button>
+                                <button class="btn btn-secondary add-to-wishlist" data-id="${product.id}">
+                                    <i class="far fa-heart"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Show product detail
+        function showProductDetail(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+            
+            showSection(productDetailSection);
+            
+            // Generate stars for rating
+            const stars = Array(5).fill(0).map((_, i) => 
+                i < Math.floor(product.rating) ? 
+                '<i class="fas fa-star"></i>' : 
+                i < product.rating ? 
+                '<i class="fas fa-star-half-alt"></i>' : 
+                '<i class="far fa-star"></i>'
+            ).join('');
+            
+            // Generate reviews HTML
+            const reviewsHTML = product.reviewsData.map(review => `
+                <div class="review-card">
+                    <div class="review-header">
+                        <div class="reviewer">
+                            <img src="${review.avatar}" alt="${review.user}">
+                            <div>
+                                <div><strong>${review.user}</strong></div>
+                                <div class="rating">
+                                    ${Array(5).fill(0).map((_, i) => 
+                                        i < review.rating ? 
+                                        '<i class="fas fa-star"></i>' : 
+                                        '<i class="far fa-star"></i>'
+                                    ).join('')}
+                                </div>
+                            </div>
+                        </div>
+                        <div class="review-date">${review.date}</div>
+                    </div>
+                    <p>${review.comment}</p>
+                </div>
+            `).join('');
+            
+            // Generate thumbnails HTML
+            const thumbnailsHTML = product.images.map((img, index) => `
+                <img src="${img}" alt="${product.name}" class="product-thumbnail ${index === 0 ? 'active' : ''}" data-index="${index}">
+            `).join('');
+            
+            // Check if product is in wishlist
+            const isInWishlist = wishlist.some(item => item.id === product.id);
+            
+            // Set product detail content
+            productDetailContent.innerHTML = `
+                <div class="product-detail-images">
+                    <img src="${product.images[0]}" alt="${product.name}" class="product-main-image" id="main-image">
+                    <div class="product-thumbnails">
+                        ${thumbnailsHTML}
+                    </div>
+                </div>
+                <div class="product-detail-content">
+                    <h1 class="product-detail-title">${product.name}</h1>
+                    <div class="product-maker">
+                        <img src="${product.maker.avatar}" alt="${product.maker.name}">
+                        <span>Dibuat oleh <strong>${product.maker.name}</strong></span>
+                    </div>
+                    <div class="product-detail-price">
+                        ${formatCurrency(product.price)}
+                        ${product.originalPrice ? 
+                            `<span style="font-size: 1rem; color: var(--gray); text-decoration: line-through; margin-left: 0.5rem;">
+                                ${formatCurrency(product.originalPrice)}
+                            </span>` : 
+                            ''}
+                    </div>
+                    <div class="rating" style="margin-bottom: 1.5rem;">
+                        ${stars}
+                        <span>${product.rating} (${product.reviews} ulasan)</span>
+                    </div>
+                    <p class="product-detail-description">${product.detailDescription}</p>
+                    
+                    <div class="product-detail-story">
+                        <h3>Cerita Pembuat</h3>
+                        <p>${product.maker.story}</p>
+                    </div>
+                    
+                    <div class="product-detail-meta">
+                        <div class="meta-item">
+                            <div class="meta-icon">
+                                <i class="fas fa-palette"></i>
+                            </div>
+                            <div class="meta-label">Bahan</div>
+                            <div>${product.material}</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                            </div>
+                            <div class="meta-label">Asal</div>
+                            <div>${product.origin}</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-icon">
+                                <i class="fas fa-info-circle"></i>
+                            </div>
+                            <div class="meta-label">Perawatan</div>
+                            <div>${product.care}</div>
+                        </div>
+                    </div>
+                    
+                    <div class="product-detail-actions">
+                        <div class="quantity-selector">
+                            <button class="quantity-btn" id="decrease-qty">-</button>
+                            <input type="text" class="quantity-input" value="1" id="product-quantity">
+                            <button class="quantity-btn" id="increase-qty">+</button>
+                        </div>
+                        <button class="btn btn-primary" id="add-to-cart-detail" data-id="${product.id}">
+                            <i class="fas fa-shopping-cart"></i>
+                            Tambah ke Keranjang
+                        </button>
+                        <button class="btn btn-secondary ${isInWishlist ? 'active' : ''}" id="add-to-wishlist-detail" data-id="${product.id}">
+                            <i class="${isInWishlist ? 'fas' : 'far'} fa-heart"></i>
+                            ${isInWishlist ? 'Di Wishlist' : 'Wishlist'}
+                        </button>
+                    </div>
+                    
+                    <div class="product-reviews">
+                        <div class="reviews-header">
+                            <h3>Ulasan Pelanggan</h3>
+                            <button class="btn btn-secondary" id="add-review-btn">
+                                <i class="fas fa-pen"></i>
+                                Tulis Ulasan
+                            </button>
+                        </div>
+                        ${reviewsHTML}
+                    </div>
+                </div>
+            `;
+            
+            // Add event listeners for product detail
+            document.querySelectorAll('.product-thumbnail').forEach(thumb => {
+                thumb.addEventListener('click', function() {
+                    const index = this.getAttribute('data-index');
+                    document.getElementById('main-image').src = product.images[index];
+                    document.querySelectorAll('.product-thumbnail').forEach(t => t.classList.remove('active'));
+                    this.classList.add('active');
+                });
+            });
+            
+            document.getElementById('decrease-qty').addEventListener('click', function() {
+                const input = document.getElementById('product-quantity');
+                if (parseInt(input.value) > 1) {
+                    input.value = parseInt(input.value) - 1;
+                }
+            });
+            
+            document.getElementById('increase-qty').addEventListener('click', function() {
+                const input = document.getElementById('product-quantity');
+                input.value = parseInt(input.value) + 1;
+            });
+            
+            document.getElementById('add-to-cart-detail').addEventListener('click', function() {
+                const quantity = parseInt(document.getElementById('product-quantity').value);
+                addToCart(product.id, quantity);
+            });
+            
+            document.getElementById('add-to-wishlist-detail').addEventListener('click', function() {
+                toggleWishlist(product.id);
+                const isInWishlist = wishlist.some(item => item.id === product.id);
+                this.innerHTML = `<i class="${isInWishlist ? 'fas' : 'far'} fa-heart"></i> ${isInWishlist ? 'Di Wishlist' : 'Wishlist'}`;
+                this.classList.toggle('active', isInWishlist);
+            });
+            
+            document.getElementById('add-review-btn').addEventListener('click', function() {
+                showNotification('Fitur menulis ulasan akan segera hadir!', 'info');
+            });
+        }
+
+        // Add to cart
+        function addToCart(productId, quantity = 1) {
+            const product = products.find(p => p.id === productId);
+            const existingItem = cart.find(item => item.id === productId);
+            
+            if (existingItem) {
+                existingItem.quantity += quantity;
+            } else {
+                cart.push({
+                    ...product,
+                    quantity: quantity
+                });
+            }
+            
+            updateCartUI();
+            showNotification(`${product.name} ditambahkan ke keranjang!`);
+        }
+
+        // Update cart UI
+        function updateCartUI() {
+            // Update cart items
+            cartItems.innerHTML = cart.length > 0 ? cart.map(item => `
+                <div class="cart-item">
+                    <img src="${item.image}" alt="${item.name}" class="cart-item-image">
+                    <div class="cart-item-details">
+                        <div class="cart-item-name">${item.name}</div>
+                        <div class="cart-item-price">${formatCurrency(item.price)}</div>
+                        <div class="cart-item-quantity">
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, -1)">-</button>
+                            <span>${item.quantity}</span>
+                            <button class="quantity-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                    </div>
+                    <div class="remove-item" onclick="removeFromCart(${item.id})">
+                        <i class="fas fa-trash"></i>
+                    </div>
+                </div>
+            `).join('') : `
+                <div style="text-align: center; padding: 2rem; color: var(--gray);">
+                    <i class="fas fa-shopping-cart" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></i>
+                    <p>Keranjang belanja kosong</p>
+                </div>
+            `;
+            
+            // Update total
+            let total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            // Apply coupon discount if active
+            if (activeCoupon) {
+                if (activeCoupon === 'DISKON10') {
+                    total = total * 0.9; // 10% discount
+                } else if (activeCoupon === 'UMKM15') {
+                    total = total * 0.85; // 15% discount
+                }
+                // GRATISONGKIR doesn't affect the total displayed here
+            }
+            
+            cartTotal.textContent = formatCurrency(total);
+            
+            // Update cart badge
+            const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
+            cartBadge.textContent = totalItems;
+            
+            // Show/hide badge based on item count
+            if (totalItems > 0) {
+                cartBadge.classList.remove('hidden');
+            } else {
+                cartBadge.classList.add('hidden');
+            }
+        }
+
+        // Update quantity
+        function updateQuantity(productId, change) {
+            const item = cart.find(item => item.id === productId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(productId);
+                } else {
+                    updateCartUI();
+                }
+            }
+        }
+
+        // Remove from cart
+        function removeFromCart(productId) {
+            const item = cart.find(item => item.id === productId);
+            cart = cart.filter(item => item.id !== productId);
+            updateCartUI();
+            if (item) {
+                showNotification(`${item.name} dihapus dari keranjang`);
+            }
+        }
+
+        // Toggle wishlist
+        function toggleWishlist(productId) {
+            const product = products.find(p => p.id === productId);
+            const existingIndex = wishlist.findIndex(item => item.id === productId);
+            
+            if (existingIndex >= 0) {
+                wishlist.splice(existingIndex, 1);
+                showNotification(`${product.name} dihapus dari wishlist`);
+            } else {
+                wishlist.push(product);
+                showNotification(`${product.name} ditambahkan ke wishlist`);
+            }
+            
+            updateWishlistUI();
+        }
+
+        // Update wishlist UI
+        function updateWishlistUI() {
+            // Update wishlist items
+            const wishlistItems = document.getElementById('wishlist-items');
+            
+            wishlistItems.innerHTML = wishlist.length > 0 ? wishlist.map(item => `
+                <div class="wishlist-item">
+                    <img src="${item.image}" alt="${item.name}" class="wishlist-item-image">
+                    <div class="wishlist-item-details">
+                        <div class="wishlist-item-name">${item.name}</div>
+                        <div class="wishlist-item-price">${formatCurrency(item.price)}</div>
+                        <div class="wishlist-actions">
+                            <button class="btn btn-primary" onclick="addToCart(${item.id})">
+                                <i class="fas fa-shopping-cart"></i>
+                                Tambah ke Keranjang
+                            </button>
+                            <button class="btn btn-secondary" onclick="toggleWishlist(${item.id})">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            `).join('') : `
+                <div class="wishlist-empty">
+                    <i class="far fa-heart"></i>
+                    <p>Wishlist Anda kosong</p>
+                    <p style="font-size: 0.9rem; margin-top: 0.5rem;">Tambahkan produk favorit Anda ke wishlist</p>
+                </div>
+            `;
+            
+            // Update wishlist badge
+            wishlistBadge.textContent = wishlist.length;
+            
+            // Show/hide badge based on item count
+            if (wishlist.length > 0) {
+                wishlistBadge.classList.remove('hidden');
+            } else {
+                wishlistBadge.classList.add('hidden');
+            }
+        }
+
+        // Apply coupon
+        function applyCoupon(code) {
+            const validCoupons = ['DISKON10', 'UMKM15', 'GRATISONGKIR'];
+            
+            if (validCoupons.includes(code)) {
+                activeCoupon = code;
+                couponSuccess.style.display = 'block';
+                couponSuccess.textContent = `Kupon ${code} berhasil diterapkan!`;
+                updateCartUI();
+                showNotification(`Kupon ${code} berhasil diterapkan!`);
+            } else {
+                couponSuccess.style.display = 'block';
+                couponSuccess.textContent = 'Kupon tidak valid atau sudah kedaluwarsa';
+                couponSuccess.style.color = 'var(--error)';
+            }
+        }
+
+        // Start payment timer
+        function startPaymentTimer() {
+            timeLeft = 60;
+            paymentTimerElement.textContent = '01:00';
+            
+            paymentTimer = setInterval(() => {
+                timeLeft--;
+                
+                const minutes = Math.floor(timeLeft / 60);
+                const seconds = timeLeft % 60;
+                
+                paymentTimerElement.textContent = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+                
+                if (timeLeft <= 0) {
+                    clearInterval(paymentTimer);
+                    paymentModal.classList.remove('active');
+                    overlay.classList.remove('active');
+                    showNotification('Waktu pembayaran telah habis', 'error');
+                }
+            }, 1000);
+        }
+
+        // Stop payment timer
+        function stopPaymentTimer() {
+            clearInterval(paymentTimer);
+        }
+
+        // Event listeners
+        cartBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            cartSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeCart.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        wishlistBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            wishlistSidebar.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeWishlist.addEventListener('click', () => {
+            wishlistSidebar.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        accountBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            accountModal.classList.add('active');
+            overlay.classList.add('active');
+        });
+
+        closeAccount.addEventListener('click', () => {
+            accountModal.classList.remove('active');
+            overlay.classList.remove('active');
+        });
+
+        registerBtn.addEventListener('click', () => {
+            showNotification('Fitur pendaftaran akan segera hadir!', 'info');
+        });
+
+        overlay.addEventListener('click', () => {
+            cartSidebar.classList.remove('active');
+            wishlistSidebar.classList.remove('active');
+            accountModal.classList.remove('active');
+            paymentModal.classList.remove('active');
+            overlay.classList.remove('active');
+            stopPaymentTimer();
+        });
+
+        checkoutBtn.addEventListener('click', () => {
+            if (cart.length === 0) {
+                showNotification('Keranjang belanja kosong!', 'error');
+                return;
+            }
+            
+            cartSidebar.classList.remove('active');
+            paymentModal.classList.add('active');
+            startPaymentTimer();
+        });
+
+        applyCouponBtn.addEventListener('click', () => {
+            const code = couponCodeInput.value.trim().toUpperCase();
+            if (code) {
+                applyCoupon(code);
+            }
+        });
+
+        couponCodeInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') {
+                const code = couponCodeInput.value.trim().toUpperCase();
+                if (code) {
+                    applyCoupon(code);
+                }
+            }
+        });
+
+        cancelPaymentBtn.addEventListener('click', () => {
+            paymentModal.classList.remove('active');
+            overlay.classList.remove('active');
+            stopPaymentTimer();
+        });
+
+        confirmPaymentBtn.addEventListener('click', () => {
+            paymentModal.classList.remove('active');
+            overlay.classList.remove('active');
+            stopPaymentTimer();
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            showNotification(`Pembayaran berhasil! Total: ${formatCurrency(total)}`);
+            
+            cart = [];
+            activeCoupon = null;
+            updateCartUI();
+            couponSuccess.style.display = 'none';
+            couponCodeInput.value = '';
+        });
+
+        // Logo click - kembali ke beranda
+        logo.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection(homeSection);
+        });
+
+        // Hero buttons
+        jelajahiProdukBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection(productsSection);
+        });
+
+        tontonKisahBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showNotification('Membuka video kisah UMKM!');
+        });
+
+        donasiBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection(donationSection);
+        });
+
+        // Back to products
+        backToProducts.addEventListener('click', (e) => {
+            e.preventDefault();
+            showSection(productsSection);
+        });
+
+        // Product card click
+        document.addEventListener('click', (e) => {
+            // Handle product card click
+            if (e.target.closest('.product-card')) {
+                const productCard = e.target.closest('.product-card');
+                // Don't trigger if clicking the add to cart or wishlist button
+                if (!e.target.closest('.add-to-cart') && !e.target.closest('.add-to-wishlist')) {
+                    const productId = parseInt(productCard.getAttribute('data-id'));
+                    showProductDetail(productId);
+                }
+            }
+            
+            // Handle add to cart button click
+            if (e.target.classList.contains('add-to-cart') || e.target.closest('.add-to-cart')) {
+                const button = e.target.classList.contains('add-to-cart') ? e.target : e.target.closest('.add-to-cart');
+                const productId = parseInt(button.getAttribute('data-id'));
+                addToCart(productId);
+            }
+            
+            // Handle add to wishlist button click
+            if (e.target.classList.contains('add-to-wishlist') || e.target.closest('.add-to-wishlist')) {
+                const button = e.target.classList.contains('add-to-wishlist') ? e.target : e.target.closest('.add-to-wishlist');
+                const productId = parseInt(button.getAttribute('data-id'));
+                toggleWishlist(productId);
+                
+                // Update button appearance
+                const isInWishlist = wishlist.some(item => item.id === productId);
+                button.innerHTML = `<i class="${isInWishlist ? 'fas' : 'far'} fa-heart"></i>`;
+                button.classList.toggle('active', isInWishlist);
+            }
+        });
+
+        // Search functionality
+        searchInput.addEventListener('input', (e) => {
+            const searchTerm = e.target.value.toLowerCase();
+            if (searchTerm.length > 2) {
+                showNotification(`Mencari: ${searchTerm}`, 'info');
+            }
+        });
+
+        // Navigation links
+        navLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const target = link.getAttribute('data-target');
+                const targetSection = document.getElementById(target);
+                
+                if (targetSection) {
+                    showSection(targetSection);
+                }
+            });
+        });
+
+        // Donation functionality
+        document.querySelectorAll('.donation-options button').forEach(button => {
+            button.addEventListener('click', function() {
+                const amount = this.getAttribute('data-amount');
+                customDonationInput.value = amount;
+            });
+        });
+
+        confirmDonationBtn.addEventListener('click', function() {
+            const amount = customDonationInput.value;
+            if (!amount || amount <= 0) {
+                showNotification('Masukkan jumlah donasi yang valid!', 'error');
+                return;
+            }
+            
+            showNotification(`Terima kasih! Donasi sebesar ${formatCurrency(amount)} telah diterima.`);
+            customDonationInput.value = '';
+            setTimeout(() => {
+                showSection(homeSection);
+            }, 2000);
+        });
+
+        // Coupon buttons in discount section
+        document.querySelectorAll('.coupons-grid button').forEach(button => {
+            button.addEventListener('click', function() {
+                const code = this.getAttribute('data-code');
+                showNotification(`Kupon ${code} siap digunakan! Tambahkan produk ke keranjang untuk menggunakan kupon.`, 'info');
+            });
+        });
+
+        // Filter functionality
+        categoryFilter.addEventListener('change', filterProducts);
+        priceFilter.addEventListener('change', filterProducts);
+        sortFilter.addEventListener('change', filterProducts);
+
+        function filterProducts() {
+            // In a real application, this would filter and sort products
+            // For this demo, we'll just show a notification
+            const category = categoryFilter.value;
+            const price = priceFilter.value;
+            const sort = sortFilter.value;
+            
+            if (category || price || sort) {
+                showNotification('Produk difilter berdasarkan pilihan Anda', 'info');
+            }
+        }
+
+        // View options
+        viewOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                const view = this.getAttribute('data-view');
+                
+                viewOptions.forEach(opt => opt.classList.remove('active'));
+                this.classList.add('active');
+                
+                if (view === 'list') {
+                    productsContainer.classList.add('list-view');
+                } else {
+                    productsContainer.classList.remove('list-view');
+                }
+                
+                showNotification(`Tampilan diubah ke mode ${view === 'grid' ? 'grid' : 'list'}`, 'info');
+            });
+        });
+
+        // Login functionality
+        loginForm.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            
+            // Simple validation
+            if (!email || !password) {
+                showNotification('Harap isi email dan password!', 'error');
+                return;
+            }
+            
+            // Simulate login process
+            showNotification('Login berhasil! Mengalihkan...');
+            
+            // Hide login page and show main website after a delay
+            setTimeout(() => {
+                loginPage.style.display = 'none';
+                mainWebsite.style.display = 'block';
+                showSection(homeSection);
+            }, 1500);
+        });
+
+        // Make functions available globally for onclick attributes
+        window.updateQuantity = updateQuantity;
+        window.removeFromCart = removeFromCart;
+        window.addToCart = addToCart;
+        window.toggleWishlist = toggleWishlist;
+
+        // Initialize
+        renderProducts();
+        renderDiscountProducts();
+        updateCartUI();
+        updateWishlistUI();
+    </script>
+</body>
+</html>
